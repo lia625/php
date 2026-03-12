@@ -11,7 +11,7 @@
     <?php
         include "connectBD.php";   
 
-        // Afficher les messages de suppression
+        
         if (isset($_GET['deleted'])) {
             if ($_GET['deleted'] === 'success') {
                 echo '<div style="background-color: green; color: white; text-align: center; padding: 10px;">
@@ -20,6 +20,18 @@
             } elseif ($_GET['deleted'] === 'error') {
                 echo '<div style="background-color: red; color: white; text-align: center; padding: 10px;">
                         <h3>Erreur lors de la suppression</h3>
+                    </div>';
+            }
+        }
+
+        if (isset($_GET['modified'])) {
+            if ($_GET['modified'] === 'success') {
+                echo '<div style="background-color: green; color: white; text-align: center; padding: 10px;">
+                        <h3>Exercice modifié avec succès</h3>
+                    </div>';
+            } elseif ($_GET['modified'] === 'error') {
+                echo '<div style="background-color: red; color: white; text-align: center; padding: 10px;">
+                        <h3>Erreur lors de la modification</h3>
                     </div>';
             }
         }
