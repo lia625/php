@@ -36,12 +36,11 @@
                 $stmt->bindParam(':id', $id);
                 
                 if ($stmt->execute()) {
-                    echo '<div style="background-color: gray;
-                                    align-content: center;
-                                    justify-content: center;
-                                    text-align: center;">
-                            <h3>Exercice modifié avec succès</h3>
-                        </div>';
+                    header('Location: ajouter.php?modified=success');
+                    exit();
+                } else {
+                    header('Location: ajouter.php?modified=error');
+                    exit();
                 }
             } else {
                 echo '<p>Veuillez remplir tous les champs.</p>';
