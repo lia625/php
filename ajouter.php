@@ -11,6 +11,19 @@
     <?php
         include "connectBD.php";   
 
+        // Afficher les messages de suppression
+        if (isset($_GET['deleted'])) {
+            if ($_GET['deleted'] === 'success') {
+                echo '<div style="background-color: green; color: white; text-align: center; padding: 10px;">
+                        <h3>Exercice supprimé avec succès</h3>
+                    </div>';
+            } elseif ($_GET['deleted'] === 'error') {
+                echo '<div style="background-color: red; color: white; text-align: center; padding: 10px;">
+                        <h3>Erreur lors de la suppression</h3>
+                    </div>';
+            }
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $titre         = $_POST['titre'] ?? '';
             $auteur        = $_POST['auteur'] ?? '';
@@ -75,7 +88,8 @@
                 <th>Titre</th>
                 <th>Auteur</th>
                 <th>Date de creation</th>
-                <th>Actions</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
         </thead>
         <tbody>
@@ -90,10 +104,8 @@
                         <td>{$exo['titre']}</td>
                         <td>{$exo['auteur']}</td>
                         <td>{$exo['date_creation']}</td>
-                        <td>
-                            <a href='modifier.php?id={$exo['id']}>Modifier</a>
-                            <a href='supprimer.php?id={$exo['id']}'>Supprimer</a>
-                        </td>
+                        <td><a href=\"modifier.php?id={$exo['id']}\">Modifier</a></td>
+                        <td><a href=\"supprimer.php?id={$exo['id']}\">Supprimer</a></td>
                       </tr>";
             }
         ?> 
